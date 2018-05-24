@@ -30,12 +30,42 @@ public class Ej2Ficheros {
                         cont++;
                     else{
                         if(partes==0)
-                           precio=precio;
+                           precio = precio*95/100;
+                        else if(partes > 3 && partes <= 10)
+                            precio = precio*110/100;
+                        dos.writeUTF(poliza);
+                        dos.writeInt(partes);
+                        dos.writeDouble(precio);
                     }
                 }
             }catch(EOFException e){
                 System.out.println(e);
             }
+            dos.close();
+            fos.close();
+            dis.close();
+            fis.close();
+            
+            f.delete();
+            f1.renameTo(f);
+            
+            fis = new FileInputStream(f);
+            dis = new DataInputStream(fis);
+            
+            try{
+                while(true){
+                    poliza = dis.readUTF();
+                    partes = dis.readInt();
+                    precio = dis.readDouble();
+                    System.out.println("Poliza: " + poliza + "\nPartes: " + partes 
+                                        + "\nPrecio: " + precio);
+                }
+            }catch(EOFException e){
+                System.out.println(e);
+            }
+            dis.close();
+            fis.close();
+            System.out.println("SE HAN DADO DE BAJA " + cont);
         }catch(IOException e){
             System.out.println(e);
         }
