@@ -30,7 +30,7 @@ public class Ej2Ficheros {
                         cont++;
                     else{
                         if(partes==0)
-                            precio=precio*
+                           precio=precio;
                     }
                 }
             }catch(EOFException e){
