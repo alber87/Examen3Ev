@@ -24,7 +24,7 @@ public class Ej2Ficheros {
                     partes = dis.readInt();
                     precio = dis.readDouble();
                     System.out.println("Poliza: " + poliza + "\nPartes: " + partes 
-                                        + "\nPrecio: " + precio);
+                                        + "\nPrecio: " + precio + "\n");
                     
                     if(partes > 10)
                         cont++;
@@ -48,6 +48,7 @@ public class Ej2Ficheros {
             
             f.delete();
             f1.renameTo(f);
+            System.out.println("--------------------------------------------------");
             
             fis = new FileInputStream(f);
             dis = new DataInputStream(fis);
@@ -58,7 +59,7 @@ public class Ej2Ficheros {
                     partes = dis.readInt();
                     precio = dis.readDouble();
                     System.out.println("Poliza: " + poliza + "\nPartes: " + partes 
-                                        + "\nPrecio: " + precio);
+                                        + "\nPrecio: " + precio + "\n");
                 }
             }catch(EOFException e){
                 System.out.println(e);
